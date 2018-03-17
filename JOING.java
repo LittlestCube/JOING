@@ -28,14 +28,14 @@ public class JOING implements ActionListener {
 	
 	public String checkBoxForCode(String[] compFile, String boxtext) {
 		try {
-		for (int i = 0; i < boxtext.length(); i++) {
-			String currtext = boxtext.substring(i, boxtext.length());
-			for (int ii = 0; ii < compFile.length && compFile[ii] != null; ii++) {
-				if (currtext.startsWith("[" + compFile[ii].substring(0, 5) + "]")) {
-					boxtext = boxtext.substring(0, i) + compFile[ii].substring(8, compFile[ii].length()) + currtext.substring(7, currtext.length());
+			for (int i = 0; i < boxtext.length(); i++) {
+				String currtext = boxtext.substring(i, boxtext.length());
+				for (int ii = 0; ii < compFile.length && compFile[ii] != null; ii++) {
+					if (currtext.startsWith("[" + compFile[ii].substring(0, 5) + "]")) {
+						boxtext = boxtext.substring(0, i) + compFile[ii].substring(8, compFile[ii].length()) + currtext.substring(7, currtext.length());
+					}
 				}
 			}
-		}
 		} catch (Exception e) { System.err.println("Whoops! Error in function checkBoxForCode(String[] compFile): " + e.toString()); }
 		return boxtext;
 	}
@@ -43,32 +43,33 @@ public class JOING implements ActionListener {
 	public String decompress(String text) {
 		String[] compFile = {};
 		try {
-		InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
-		BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-		List<String> arr = new ArrayList<String>();
-		int i = 0;
-		for (String line = ""; line != null; line = buff.readLine()) {
-			if (line != "") {
-				arr.add(line);
+			System.out.println("we got this far");
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
+			BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			List<String> arr = new ArrayList<String>();
+			int i = 0;
+			for (String line = ""; line != null; line = buff.readLine()) {
+				if (line != "") {
+					arr.add(line);
+				}
 			}
-		}
-		compFile = arr.toArray(new String[arr.size()]);
-		buff.close();
+			compFile = arr.toArray(new String[arr.size()]);
+			buff.close();
 		} catch (Exception e) { System.err.println("Whoops! Error in function decompress(): " + e.toString()); }
 		return checkBoxForCode(compFile, text);
 	}
 	
 	public String checkBoxForText(String[] compFile, String boxtext) {
 		try {
-		for (int i = 0; i < boxtext.length(); i++) {
-			String currtext = boxtext.substring(i, boxtext.length());
-			for (int ii = compFile.length - 1; ii > -1; ii--) {
-				String currcheck = compFile[ii].substring(8, compFile[ii].length());
-				if (currtext.startsWith(currcheck)) {
-					boxtext = boxtext.substring(0, i) + "[" + compFile[ii].substring(0, 5) + "]" + currtext.substring(currcheck.length(), currtext.length());
+			for (int i = 0; i < boxtext.length(); i++) {
+				String currtext = boxtext.substring(i, boxtext.length());
+				for (int ii = compFile.length - 1; ii > -1; ii--) {
+					String currcheck = compFile[ii].substring(8, compFile[ii].length());
+					if (currtext.startsWith(currcheck)) {
+						boxtext = boxtext.substring(0, i) + "[" + compFile[ii].substring(0, 5) + "]" + currtext.substring(currcheck.length(), currtext.length());
+					}
 				}
 			}
-		}
 		} catch (Exception e) { System.err.println("Whoops! Error in function checkBoxForText(String[] compFile): " + e.toString()); }
 		return boxtext;
 	}
@@ -76,17 +77,17 @@ public class JOING implements ActionListener {
 	public String compress(String text) {
 		String[] compFile = {};
 		try {
-		InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
-		BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-		List<String> arr = new ArrayList<String>();
-		int i = 0;
-		for (String line = ""; line != null; line = buff.readLine()) {
-			if (line != "") {
-				arr.add(line);
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
+			BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			List<String> arr = new ArrayList<String>();
+			int i = 0;
+			for (String line = ""; line != null; line = buff.readLine()) {
+				if (line != "") {
+					arr.add(line);
+				}
 			}
-		}
-		compFile = arr.toArray(new String[arr.size()]);
-		buff.close();
+			compFile = arr.toArray(new String[arr.size()]);
+			buff.close();
 		} catch (Exception e) { System.err.println("Whoops! Error in function compress(): " + e.toString()); }
 		return checkBoxForText(compFile, text);
 	}
