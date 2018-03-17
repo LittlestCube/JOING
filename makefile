@@ -6,6 +6,9 @@ dev:
 	javac JOING.java
 	jar cvfe JOING.jar JOING *
 
+nojar:
+	javac JOING.java
+
 clean:
 	rm JOING.class || continue
 
