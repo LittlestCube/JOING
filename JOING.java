@@ -43,7 +43,7 @@ public class JOING implements ActionListener {
 	public String decompress(String text) {
 		String[] compFile = {};
 		try {
-			FileReader fr = new FileReader(new File("JOING/comptext.txt"));
+			FileReader fr = new FileReader(new File("comptext.txt"));
 			BufferedReader buff = new BufferedReader(fr);
 			List<String> arr = new ArrayList<String>();
 			int i = 0;
@@ -76,7 +76,7 @@ public class JOING implements ActionListener {
 	public String compress(String text) {
 		String[] compFile = {};
 		try {
-			FileReader fr = new FileReader(new File("JOING/comptext.txt"));
+			FileReader fr = new FileReader(new File("comptext.txt"));
 			BufferedReader buff = new BufferedReader(fr);
 			List<String> arr = new ArrayList<String>();
 			int i = 0;
