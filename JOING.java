@@ -43,10 +43,10 @@ public class JOING implements ActionListener {
 	public String decompress(String text) {
 		String[] compFile = {};
 		try {
-			System.out.println("we got this far");
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
 			BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 			List<String> arr = new ArrayList<String>();
+			System.out.println("we got this far");
 			int i = 0;
 			for (String line = ""; line != null; line = buff.readLine()) {
 				if (line != "") {
