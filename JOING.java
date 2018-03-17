@@ -2,7 +2,6 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
-import leviathanyaml.*;
 
 public class JOING implements ActionListener { 
 	
@@ -61,7 +60,7 @@ public class JOING implements ActionListener {
 		try {
 		for (int i = 0; i < boxtext.length(); i++) {
 			String currtext = boxtext.substring(i, boxtext.length());
-			for (int ii = 0; ii < compFile.length && compFile[ii] != null; ii++) {
+			for (int ii = compFile.length - 1; ii > -1; ii--) {
 				String currcheck = compFile[ii].substring(8, compFile[ii].length());
 				if (currtext.startsWith(currcheck)) {
 					boxtext = boxtext.substring(0, i) + "[" + compFile[ii].substring(0, 5) + "]" + currtext.substring(currcheck.length(), currtext.length());
@@ -97,9 +96,10 @@ public class JOING implements ActionListener {
 		comp.addActionListener(app);
 		win.add(decomp);
 		decomp.addActionListener(app);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.add(win);
-		frame.setSize(500, 310);
-		frame.setResizable(false);
+		frame.setSize(500, 320);
+		frame.setResizable(true);
 		frame.setVisible(true);
 	}
 }
