@@ -44,8 +44,8 @@ public class JOING implements ActionListener {
 		String[] compFile = {};
 		try {
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("comptext.txt");
-			System.out.println("we got this far");
 			BufferedReader buff = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			System.out.println("we got this far");
 			List<String> arr = new ArrayList<String>();
 			int i = 0;
 			for (String line = ""; line != null; line = buff.readLine()) {
