@@ -1,17 +1,9 @@
-all:
-	make dev
-	make clean
+all: JOING.jar
 
-dev:
-	javac JOING.java
-	jar cvfe JOING.jar JOING *
-
-nojar:
-	javac JOING.java
+JOING.jar: JOING.java
+	javac $<
+	jar cvfe $@ JOING JOING.class comptext.txt
+	rm -f JOING.class
 
 clean:
-	rm JOING.class || continue
-
-clean-all:
-	make clean
-	rm JOING.jar || continue
+	rm -f JOING.jar

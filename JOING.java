@@ -98,8 +98,8 @@ public class JOING implements ActionListener {
 		decomp.addActionListener(app);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.add(win);
-		frame.setSize(500, 320);
-		frame.setResizable(true);
+		frame.setSize(500, 300);
+		frame.setResizable(false);
 		frame.setVisible(true);
 	}
 }
